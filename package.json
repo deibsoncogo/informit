@@ -1,0 +1,10 @@
+{
+  "name": "informit",
+  "version": "1.0.0",
+  "description": "Um site para coletar a descrição e link dos commits do GitHub",
+  "main": "index.js",
+  "repository": "https://github.com/deibsoncogo/Informit.git",
+  "author": "Deibson Cogo <deibsoncogo@outlook.com>",
+  "license": "MIT",
+  "private": true
+}
