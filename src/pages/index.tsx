@@ -1,8 +1,8 @@
 import style from './index.module.scss'
 
-export default function Home() {
+export default function Index() {
   return (
-    <div className={style.container}>
+    <div className={style.index}>
       Index
     </div>
   )
