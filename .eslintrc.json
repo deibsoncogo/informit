@@ -1,5 +1,6 @@
 {
   "rules": {
+    "react/jsx-no-constructed-context-values": "off",
     "jsx-quotes": ["error", "prefer-single"],
     "react/jsx-props-no-spreading": "off",
     "react/jsx-one-expression-per-line": "off",
