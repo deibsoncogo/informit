@@ -9,7 +9,7 @@ export function Header() {
       <h1 className={style.title}>
         Informit
 
-        <strong id={message?.isError && style.error} className={style.message}>
+        <strong id={message?.isError ? style.error : ''} className={style.message}>
           {message?.description}
         </strong>
       </h1>
