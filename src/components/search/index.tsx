@@ -8,56 +8,63 @@ export function Search() {
   const { CreateMessage, DeleteMessage } = UseMessage()
   const { SaveCommits } = UseCommit()
 
-  const [owner, setOwner] = useState('')
   const [repository, setRepository] = useState('')
   const [author, setAuthor] = useState('')
-  const [periodTo, setPeriodTo] = useState('')
-  const [periodFrom, setPeriodFrom] = useState('')
+  const [email, setEmail] = useState('')
+  const [date, setDate] = useState('')
 
   useEffect(() => {
-    setOwner(localStorage.getItem('@informit:owner') || '')
     setRepository(localStorage.getItem('@informit:repository') || '')
     setAuthor(localStorage.getItem('@informit:author') || '')
-    setPeriodTo(localStorage.getItem('@informit:periodTo') || '')
-    setPeriodFrom(localStorage.getItem('@informit:periodFrom') || '')
+    setEmail(localStorage.getItem('@informit:email') || '')
+    setDate(localStorage.getItem('@informit:date') || '')
   }, [])
 
   async function SearchCommits(event: FormEvent) {
     event.preventDefault()
 
-    if (!owner) {
-      return CreateMessage({ description: 'Não foi informado o login do proprietário', isError: true })
+    if (!repository && !author && !email && !date) {
+      return CreateMessage({ description: 'Não foi informado nenhum critério de pesquisa', isError: true })
     }
 
-    if (!repository) {
-      return CreateMessage({ description: 'Não foi informado o nome do repositório', isError: true })
+    if (repository && (!author && !email && !date)) {
+      return CreateMessage({ description: 'Informe mais um critério de pesquisa', isError: true })
     }
 
-    await axios.get(`https://api.github.com/repos/${owner}/${repository}/commits?per_page=100&page=1`)
+    const url = `https://api.github.com/search/commits?q=
+      ${repository && `repo:${repository}+`}
+      ${author && `author:${author}+`}${email && `author-email:${email}+`}${date && `author-date:${date}+`}
+    &per_page=100&page=1`
+
+    await axios.get(url)
       .then((response) => {
-        localStorage.setItem('@informit:owner', owner.toString())
-        localStorage.setItem('@informit:repository', repository.toString())
-        author && localStorage.setItem('@informit:author', author.toString())
-        periodTo && localStorage.setItem('@informit:periodTo', periodTo.toString())
-        periodFrom && localStorage.setItem('@informit:periodFrom', periodFrom.toString())
+        repository && localStorage.setItem('@informit:repository', repository)
+        author && localStorage.setItem('@informit:author', author)
+        email && localStorage.setItem('@informit:email', email)
+        date && localStorage.setItem('@informit:date', date)
 
         SaveCommits(response.data)
 
         DeleteMessage()
 
-        response.data.length > 100 && CreateMessage({
-          description: 'Você ultrapassou o limite de 100 commits por pesquisa',
-          isError: true,
-        })
+        if (response.data.total_count < 1) {
+          return CreateMessage({ description: 'Não existe commit para ser recuperado', isError: false })
+        }
+
+        if (response.data.total_count > 100) {
+          return CreateMessage({ description: 'Só é possível recuperar 100 commits por vez', isError: true })
+        }
+
+        return true
       })
       .catch((error) => {
-        localStorage.clear()
+        console.error('error =>', error)
 
         SaveCommits(undefined)
 
         CreateMessage({
-          description: error.response.status === 404
-            ? 'Dados informado não pertencem a nenhum repositório'
+          description: error.response.status === 422
+            ? 'Critério de pesquisa inválido'
             : 'Aconteceu um erro inesperado',
           isError: true,
         })
@@ -67,33 +74,20 @@ export function Search() {
   return (
     <form className={style.search}>
       <span>
-        <label htmlFor='owner'>Proprietário</label>
-        <input
-          type='text'
-          id='owner'
-          name='owner'
-          placeholder='github'
-          value={owner}
-          onChange={(event) => { setOwner(event.target.value) }}
-        />
-      </span>
-
-      <span>
-        <label htmlFor='repository'>Repositório</label>
+        <label htmlFor='repository'>Nome do repositório</label>
         <input
           type='text'
           id='repository'
           name='repository'
-          placeholder='readme'
+          placeholder='github/readme'
           value={repository}
           onChange={(event) => { setRepository(event.target.value) }}
         />
       </span>
 
       <span>
-        <label htmlFor='author'>Autor</label>
+        <label htmlFor='author'>Login do autor</label>
         <input
-          disabled
           type='text'
           id='author'
           name='author'
@@ -104,26 +98,26 @@ export function Search() {
       </span>
 
       <span>
-        <label htmlFor='periodTo'>Período inicial</label>
+        <label htmlFor='email'>E-mail do autor</label>
         <input
-          disabled
-          type='datetime-local'
-          id='periodTo'
-          name='periodTo'
-          value={periodTo}
-          onChange={(event) => { setPeriodTo(event.target.value) }}
+          type='email'
+          id='email'
+          name='email'
+          placeholder='dev@github.com'
+          value={email}
+          onChange={(event) => { setEmail(event.target.value) }}
         />
       </span>
 
       <span>
-        <label htmlFor='periodFrom'>Período final</label>
+        <label htmlFor='date'>Data do commit</label>
         <input
-          disabled
-          type='datetime-local'
-          id='periodFrom'
-          name='periodFrom'
-          value={periodFrom}
-          onChange={(event) => { setPeriodFrom(event.target.value) }}
+          type='date'
+          id='date'
+          name='date'
+          placeholder='13/07/2022'
+          value={date}
+          onChange={(event) => { setDate(event.target.value) }}
         />
       </span>
 
