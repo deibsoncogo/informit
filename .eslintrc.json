@@ -1,5 +1,7 @@
 {
   "rules": {
+    "no-unused-expressions": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     "react/jsx-no-constructed-context-values": "off",
     "jsx-quotes": ["error", "prefer-single"],
     "react/jsx-props-no-spreading": "off",
