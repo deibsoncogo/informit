@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import axios from 'axios'
 import { UseCommit } from '../../contexts/commitContext'
 import { UseMessage } from '../../contexts/messageContext'
@@ -14,6 +14,14 @@ export function Search() {
   const [periodTo, setPeriodTo] = useState('')
   const [periodFrom, setPeriodFrom] = useState('')
 
+  useEffect(() => {
+    setOwner(localStorage.getItem('@informit:owner') || '')
+    setRepository(localStorage.getItem('@informit:repository') || '')
+    setAuthor(localStorage.getItem('@informit:author') || '')
+    setPeriodTo(localStorage.getItem('@informit:periodTo') || '')
+    setPeriodFrom(localStorage.getItem('@informit:periodFrom') || '')
+  }, [])
+
   async function SearchCommits(event: FormEvent) {
     event.preventDefault()
 
@@ -27,6 +35,12 @@ export function Search() {
 
     await axios.get(`https://api.github.com/repos/${owner}/${repository}/commits?per_page=100&page=1`)
       .then((response) => {
+        localStorage.setItem('@informit:owner', owner.toString())
+        localStorage.setItem('@informit:repository', repository.toString())
+        author && localStorage.setItem('@informit:author', author.toString())
+        periodTo && localStorage.setItem('@informit:periodTo', periodTo.toString())
+        periodFrom && localStorage.setItem('@informit:periodFrom', periodFrom.toString())
+
         SaveCommits(response.data)
 
         DeleteMessage()
