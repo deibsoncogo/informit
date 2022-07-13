@@ -43,7 +43,7 @@ export function Search() {
         email && localStorage.setItem('@informit:email', email)
         date && localStorage.setItem('@informit:date', date)
 
-        SaveCommits(response.data)
+        SaveCommits(response.data.items)
 
         DeleteMessage()
 
