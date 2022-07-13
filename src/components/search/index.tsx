@@ -33,7 +33,7 @@ export function Search() {
 
     const url = `https://api.github.com/search/commits?q=
       ${repository && `repo:${repository}+`}
-      ${author && `author:${author}+`}${email && `author-email:${email}+`}${date && `author-date:${date}+`}
+      ${author && `author:${author}&`}${email && `author-email:${email}&`}${date && `author-date:${date}`}
     &per_page=100&page=1`
 
     await axios.get(url)
