@@ -17,7 +17,6 @@ export function Search() {
     setRepository(localStorage.getItem('@informit:repository') || '')
     setAuthor(localStorage.getItem('@informit:author') || '')
     setEmail(localStorage.getItem('@informit:email') || '')
-    setDate(localStorage.getItem('@informit:date') || '')
   }, [])
 
   async function SearchCommits(event: FormEvent) {
@@ -38,10 +37,10 @@ export function Search() {
 
     await axios.get(url)
       .then((response) => {
+        localStorage.clear()
         repository && localStorage.setItem('@informit:repository', repository)
         author && localStorage.setItem('@informit:author', author)
         email && localStorage.setItem('@informit:email', email)
-        date && localStorage.setItem('@informit:date', date)
 
         SaveCommits(response.data.items)
 
