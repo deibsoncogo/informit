@@ -19,7 +19,6 @@ type TCommit = {
     name: string
     owner: {
       login: string
-      type: string
     }
     description: string
   }

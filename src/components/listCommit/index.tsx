@@ -22,7 +22,6 @@ export function ListCommit() {
             repositoryFullName={repository.full_name}
             repositoryName={repository.name}
             repositoryDescription={repository.description}
-            repositoryOwnerType={repository.owner.type}
           />
         ))}
       </section>

@@ -11,12 +11,11 @@ type TProps = {
   repositoryFullName: string
   repositoryName: string
   repositoryDescription: string
-  repositoryOwnerType: string
 }
 
 export function Commit({
   commitMessage, commitUrl, commitDate, authorName, authorLogin, authorAvatarUrl, authorHtmlUrl,
-  repositoryFullName, repositoryName, repositoryDescription, repositoryOwnerType,
+  repositoryFullName, repositoryName, repositoryDescription,
 }: TProps) {
   const urlRepository = `https://github.com/${repositoryFullName}`
   const newDate = new Date(commitDate)
@@ -33,7 +32,7 @@ export function Commit({
 
       <section className={style.commitExtra}>
         <span className={style.information}>
-          <a href={urlRepository} target='_blank' title={repositoryDescription} id={repositoryOwnerType}>
+          <a href={urlRepository} target='_blank' title={repositoryDescription}>
             <strong className={style.repositoryName}>{repositoryName}</strong>
           </a>
 
