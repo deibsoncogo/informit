@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 import { UseCommit } from '../../contexts/commitContext'
-import { CommitExtra } from '../commitExtra'
-import { CommitNote } from '../commitNote'
+import { Commit } from '../commit'
 import style from './style.module.scss'
 
 export function ListCommit() {
@@ -10,19 +9,11 @@ export function ListCommit() {
   return (
     <div className={style.listCommit}>
       <section className={style.commitNote}>
-        {commits?.map(({ sha, html_url, commit }) => (
-          <CommitNote
+        {commits?.map(({ sha, html_url, commit, author, repository }) => (
+          <Commit
             key={sha}
             commitMessage={commit.message}
             commitUrl={html_url}
-          />
-        ))}
-      </section>
-
-      <section className={style.commitExtra}>
-        {commits?.map(({ sha, commit, author, repository }) => (
-          <CommitExtra
-            key={sha}
             commitDate={commit.author.date}
             authorName={commit.author.name}
             authorLogin={author.login}
