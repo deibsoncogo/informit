@@ -82,7 +82,7 @@ export function Search() {
           placeholder='github/readme'
           value={repository}
           onChange={(event) => { setRepository(event.target.value) }}
-          style={{ width: 250 }}
+          style={{ width: 300 }}
         />
       </span>
 
