@@ -1,5 +1,6 @@
 {
   "rules": {
+    "react/jsx-no-target-blank": "off",
     "no-unused-expressions": "off",
     "jsx-a11y/label-has-associated-control": "off",
     "react/jsx-no-constructed-context-values": "off",
