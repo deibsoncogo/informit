@@ -1,0 +1,36 @@
+.commitExtra {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
+  height: 55px;
+  gap: 30px;
+
+  text-align: center;
+  font-weight: bold;
+  user-select: none;
+
+  .information {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dateTime {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 55px;
+    height: 55px;
+    border: 1px solid #dbdbdb;
+    border-radius: 50px;
+  }
+}
