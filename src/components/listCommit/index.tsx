@@ -6,22 +6,24 @@ import style from './style.module.scss'
 export function ListCommit() {
   const { commits } = UseCommit()
 
+  const messageError = 'Erro 404'
+
   return (
     <div className={style.listCommit}>
       <section className={style.commitNote}>
         {commits?.map(({ sha, html_url, commit, author, repository }) => (
           <Commit
-            key={sha}
-            commitMessage={commit.message}
-            commitUrl={html_url}
-            commitDate={commit.author.date}
-            authorName={commit.author.name}
-            authorLogin={author.login}
-            authorAvatarUrl={author.avatar_url}
-            authorHtmlUrl={author.html_url}
-            repositoryFullName={repository.full_name}
-            repositoryName={repository.name}
-            repositoryDescription={repository.description}
+            key={sha || messageError}
+            commitMessage={commit ? commit.message : messageError}
+            commitUrl={html_url || messageError}
+            commitDate={commit ? commit.author.date : messageError}
+            authorName={commit ? commit.author.name : messageError}
+            authorLogin={author ? author.login : messageError}
+            authorAvatarUrl={author ? author.avatar_url : messageError}
+            authorHtmlUrl={author ? author.html_url : messageError}
+            repositoryFullName={repository ? repository.full_name : messageError}
+            repositoryName={repository ? repository.name : messageError}
+            repositoryDescription={repository ? repository.description : messageError}
           />
         ))}
       </section>
