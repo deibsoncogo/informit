@@ -8,7 +8,6 @@
   padding: 0;
 
   box-sizing: border-box;
-  cursor: default;
 
   font-size: 16px;
   font-family: 'Lato', sans-serif;
@@ -21,6 +20,7 @@ html {
 
 body {
   margin: 20px;
+  cursor: default;
 }
 
 a {
