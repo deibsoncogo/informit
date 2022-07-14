@@ -79,9 +79,11 @@ export function Search() {
           type='text'
           id='repository'
           name='repository'
+          spellCheck='false'
           placeholder='github/readme'
           value={repository}
           onChange={(event) => { setRepository(event.target.value) }}
+          style={{ width: 250 }}
         />
       </span>
 
@@ -91,9 +93,11 @@ export function Search() {
           type='text'
           id='author'
           name='author'
+          spellCheck='false'
           placeholder='dev'
           value={author}
           onChange={(event) => { setAuthor(event.target.value) }}
+          style={{ width: 200 }}
         />
       </span>
 
@@ -103,9 +107,11 @@ export function Search() {
           type='email'
           id='email'
           name='email'
+          spellCheck='false'
           placeholder='dev@github.com'
           value={email}
           onChange={(event) => { setEmail(event.target.value) }}
+          style={{ width: 250 }}
         />
       </span>
 
@@ -118,6 +124,7 @@ export function Search() {
           placeholder='13/07/2022'
           value={date}
           onChange={(event) => { setDate(event.target.value) }}
+          style={{ width: 150 }}
         />
       </span>
 
