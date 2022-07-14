@@ -6,6 +6,8 @@ import style from './index.module.scss'
 export default function Index() {
   return (
     <div className={style.index}>
+      <title>Informit</title>
+
       <Header />
 
       <main>
