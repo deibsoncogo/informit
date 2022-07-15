@@ -25,18 +25,18 @@ export function Commit({
       <section className={style.commitNote}>
         <strong>{commitMessage}</strong>
 
-        <a style={{ width: 100 }} href={commitUrl} target='_blank'>
+        <a tabIndex={-1} style={{ width: 100 }} href={commitUrl} target='_blank'>
           <p>{commitUrl}</p>
         </a>
       </section>
 
       <section className={style.commitExtra}>
         <span className={style.information}>
-          <a href={urlRepository} target='_blank' title={repositoryDescription}>
+          <a tabIndex={-1} href={urlRepository} target='_blank' title={repositoryDescription}>
             <strong className={style.repositoryName}>{repositoryName}</strong>
           </a>
 
-          <a href={authorHtmlUrl} target='_blank' title={`login: ${authorLogin}`}>
+          <a tabIndex={-1} href={authorHtmlUrl} target='_blank' title={`login: ${authorLogin}`}>
             <strong className={style.authorName}>{authorName}</strong>
           </a>
         </span>
@@ -57,7 +57,7 @@ export function Commit({
           </strong>
         </span>
 
-        <a href={authorHtmlUrl} target='_blank'>
+        <a tabIndex={-1} href={authorHtmlUrl} target='_blank'>
           <img src={authorAvatarUrl} alt='Avatar' className={style.avatar} />
         </a>
       </section>
