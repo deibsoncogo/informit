@@ -37,7 +37,7 @@ export function Search() {
     const [yy, mm, dd] = date.split('-')
 
     if (new Date(Number(yy), Number(mm) - 1, Number(dd)) > new Date()) {
-      return CreateMessage({ description: 'Não é possível informar data futura', isError: true })
+      return CreateMessage({ description: 'Não é possível informar uma data futura', isError: true })
     }
 
     const url = `https://api.github.com/search/commits?q=
