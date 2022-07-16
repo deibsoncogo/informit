@@ -25,7 +25,7 @@ export function Commit({
       <section className={style.commitNote}>
         <strong>{commitMessage}</strong>
 
-        <a tabIndex={-1} style={{ width: 100 }} href={commitUrl} target='_blank'>
+        <a tabIndex={-1} href={commitUrl} target='_blank' className={style.commitUrl}>
           <p>{commitUrl}</p>
         </a>
       </section>

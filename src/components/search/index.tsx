@@ -8,10 +8,12 @@ export function Search() {
   const { CreateMessage, DeleteMessage } = UseMessage()
   const { SaveCommits } = UseCommit()
 
+  const [d, m, y] = new Date().toLocaleDateString().split('/')
+
   const [repository, setRepository] = useState('')
   const [author, setAuthor] = useState('')
   const [email, setEmail] = useState('')
-  const [date, setDate] = useState('')
+  const [date, setDate] = useState(`${y}-${m}-${d}`)
 
   useEffect(() => {
     setRepository(localStorage.getItem('@informit:repository') || '')
@@ -74,60 +76,60 @@ export function Search() {
 
   return (
     <form className={style.search}>
-      <span>
-        <label htmlFor='repository'>Nome do repositório</label>
-        <input
-          type='text'
-          id='repository'
-          name='repository'
-          spellCheck='false'
-          placeholder='github/readme'
-          value={repository}
-          onChange={(event) => { setRepository(event.target.value) }}
-          style={{ width: 300 }}
-        />
-      </span>
+      <div className={style.searchSubGroup}>
+        <span className={`${style.spanSearch} ${style.repository}`}>
+          <label htmlFor='repository'>Nome do repositório</label>
+          <input
+            type='text'
+            name='repository'
+            spellCheck='false'
+            placeholder='github/readme'
+            value={repository}
+            onChange={(event) => { setRepository(event.target.value) }}
+            id='repository'
+          />
+        </span>
 
-      <span>
-        <label htmlFor='author'>Login do autor</label>
-        <input
-          type='text'
-          id='author'
-          name='author'
-          spellCheck='false'
-          placeholder='dev'
-          value={author}
-          onChange={(event) => { setAuthor(event.target.value) }}
-          style={{ width: 200 }}
-        />
-      </span>
+        <span className={`${style.spanSearch} ${style.author}`}>
+          <label htmlFor='author'>Login do autor</label>
+          <input
+            type='text'
+            name='author'
+            spellCheck='false'
+            placeholder='dev'
+            value={author}
+            onChange={(event) => { setAuthor(event.target.value) }}
+            id='author'
+          />
+        </span>
+      </div>
 
-      <span>
-        <label htmlFor='email'>E-mail do autor</label>
-        <input
-          type='email'
-          id='email'
-          name='email'
-          spellCheck='false'
-          placeholder='dev@github.com'
-          value={email}
-          onChange={(event) => { setEmail(event.target.value) }}
-          style={{ width: 250 }}
-        />
-      </span>
+      <div className={style.searchSubGroup}>
+        <span className={`${style.spanSearch} ${style.email}`}>
+          <label htmlFor='email'>E-mail do autor</label>
+          <input
+            type='email'
+            name='email'
+            spellCheck='false'
+            placeholder='dev@github.com'
+            value={email}
+            onChange={(event) => { setEmail(event.target.value) }}
+            id='email'
+          />
+        </span>
 
-      <span>
-        <label htmlFor='date'>Data do commit</label>
-        <input
-          type='date'
-          id='date'
-          name='date'
-          placeholder='13/07/2022'
-          value={date}
-          onChange={(event) => { setDate(event.target.value) }}
-          style={{ width: 150 }}
-        />
-      </span>
+        <span className={`${style.spanSearch} ${style.date}`}>
+          <label htmlFor='date'>Data do commit</label>
+          <input
+            type='date'
+            name='date'
+            placeholder='13/07/2022'
+            value={date}
+            onChange={(event) => { setDate(event.target.value) }}
+            id='date'
+          />
+        </span>
+      </div>
 
       <button type='submit' onClick={(event) => { SearchCommits(event) }} className={style.buttonSearch}>
         Buscar

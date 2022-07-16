@@ -11,10 +11,7 @@ export default function Index() {
   useEffect(() => {
     setTimeout(() => {
       CreateMessage({
-        description: `
-        Achou algum erro ou quer melhorar algo,
-        então entre em contato deibsoncogo@outlook.com   //   (16) 99708-4454
-        `,
+        description: 'Para entrar em contato utilizei o WhatsApp, (16) 99708-4454',
         isError: false,
       })
     }, 1000 * 60 * 30)
@@ -25,13 +22,8 @@ export default function Index() {
       <title>Informit</title>
 
       <Header />
-
-      <main>
-        <Search />
-        <ListCommit />
-      </main>
-
-      <footer />
+      <Search />
+      <ListCommit />
     </div>
   )
 }

@@ -8,11 +8,11 @@ export function Header() {
     <div className={style.header}>
       <h1 className={style.title}>
         Informit
-
-        <strong id={message?.isError ? style.error : ''} className={style.message}>
-          {message?.description}
-        </strong>
       </h1>
+
+      <strong id={message?.isError ? style.error : ''} className={style.message}>
+        {message?.description}
+      </strong>
     </div>
   )
 }

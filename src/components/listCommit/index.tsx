@@ -10,23 +10,21 @@ export function ListCommit() {
 
   return (
     <div className={style.listCommit}>
-      <section className={style.commitNote}>
-        {commits?.map(({ sha, html_url, commit, author, repository }) => (
-          <Commit
-            key={sha || messageError}
-            commitMessage={commit ? commit.message : messageError}
-            commitUrl={html_url || messageError}
-            commitDate={commit ? commit.author.date : messageError}
-            authorName={commit ? commit.author.name : messageError}
-            authorLogin={author ? author.login : messageError}
-            authorAvatarUrl={author ? author.avatar_url : messageError}
-            authorHtmlUrl={author ? author.html_url : messageError}
-            repositoryFullName={repository ? repository.full_name : messageError}
-            repositoryName={repository ? repository.name : messageError}
-            repositoryDescription={repository ? repository.description : messageError}
-          />
-        ))}
-      </section>
+      {commits?.map(({ sha, html_url, commit, author, repository }) => (
+        <Commit
+          key={sha || messageError}
+          commitMessage={commit ? commit.message : messageError}
+          commitUrl={html_url || messageError}
+          commitDate={commit ? commit.author.date : messageError}
+          authorName={commit ? commit.author.name : messageError}
+          authorLogin={author ? author.login : messageError}
+          authorAvatarUrl={author ? author.avatar_url : messageError}
+          authorHtmlUrl={author ? author.html_url : messageError}
+          repositoryFullName={repository ? repository.full_name : messageError}
+          repositoryName={repository ? repository.name : messageError}
+          repositoryDescription={repository ? repository.description : messageError}
+        />
+      ))}
     </div>
   )
 }
