@@ -24,6 +24,8 @@ export function Search() {
   async function SearchCommits(event: FormEvent) {
     event.preventDefault()
 
+    SaveCommits(undefined)
+
     if (!repository && !author && !email && !date) {
       return CreateMessage({ description: 'Não foi informado nenhum critério de pesquisa', isError: true })
     }
