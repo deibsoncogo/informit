@@ -12,7 +12,7 @@ export function ListCommit() {
     <div className={style.listCommit}>
       {commits?.map(({ sha, html_url, commit, author, repository }) => (
         <Commit
-          key={sha || messageError}
+          key={sha + Math.random()}
           commitMessage={commit ? commit.message : messageError}
           commitUrl={html_url || messageError}
           commitDate={commit ? commit.author.date : messageError}
