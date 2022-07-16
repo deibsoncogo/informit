@@ -24,62 +24,83 @@ export function Search() {
   async function SearchCommits(event: FormEvent) {
     event.preventDefault()
 
+    DeleteMessage()
     SaveCommits(undefined)
 
     if (!repository && !author && !email && !date) {
       return CreateMessage({ description: 'Não foi informado nenhum critério de pesquisa', isError: true })
     }
 
-    if (repository && (!author && !email && !date)) {
-      return CreateMessage({ description: 'Informe mais um critério de pesquisa', isError: true })
+    if (date) {
+      const [yy, mm, dd] = date.split('-')
+
+      if (new Date(Number(yy), Number(mm) - 1, Number(dd)) > new Date()) {
+        return CreateMessage({ description: 'Não é possível informar uma data futura', isError: true })
+      }
     }
 
-    const [yy, mm, dd] = date.split('-')
-
-    if (new Date(Number(yy), Number(mm) - 1, Number(dd)) > new Date()) {
-      return CreateMessage({ description: 'Não é possível informar uma data futura', isError: true })
+    if (repository) {
+      try {
+        await axios.get(`https://api.github.com/repos/${repository}/commits?per_page=100&page=1`)
+      } catch (error) {
+        return CreateMessage({ description: 'Nome completo do repositório inválido', isError: true })
+      }
     }
 
-    const url = `https://api.github.com/search/commits?q=
-      ${repository && `repo:${repository}+`}
-      ${author && `author:${author}+`}
-      ${email && `author-email:${email}+`}
-      ${date && `author-date:${date}`}
-    &per_page=100&page=1&sort=author-date&order=desc`
+    if (author) {
+      try {
+        await axios.get(`https://api.github.com/users/${author}`)
+      } catch (error) {
+        return CreateMessage({ description: 'Login do autor inválido', isError: true })
+      }
+    }
 
-    await axios.get(url)
-      .then((response) => {
-        localStorage.clear()
-        repository && localStorage.setItem('@informit:repository', repository)
-        author && localStorage.setItem('@informit:author', author)
-        email && localStorage.setItem('@informit:email', email)
+    try {
+      const isOnlyRepository = repository && (!author && !email && !date)
+      let baseUrl: string
 
-        SaveCommits(response.data.items)
+      if (isOnlyRepository) {
+        baseUrl = `https://api.github.com/repos/${repository}/commits?per_page=100&page=1`
+      } else {
+        baseUrl = `https://api.github.com/search/commits?q=
+        ${author && `author:${author}+`}
+        ${email && `author-email:${email}+`}
+        ${date && `author-date:${date}+`}
+        ${repository && `repo:${repository}+`}
+      &per_page=100&page=1&sort=author-date&order=desc`
+      }
 
-        DeleteMessage()
+      const response = await axios.get(baseUrl)
 
-        if (response.data.total_count < 1) {
-          return CreateMessage({ description: 'Não existe commit para ser recuperado', isError: false })
-        }
+      localStorage.clear()
+      repository && localStorage.setItem('@informit:repository', repository)
+      author && localStorage.setItem('@informit:author', author)
+      email && localStorage.setItem('@informit:email', email)
 
-        if (response.data.total_count > 100) {
-          return CreateMessage({ description: 'Só é possível recuperar 100 commits por vez', isError: true })
-        }
+      let data: []
 
-        return true
-      })
-      .catch((error) => {
-        console.error('error =>', error)
+      if (isOnlyRepository) {
+        data = response.data
+      } else {
+        data = response.data.items
+      }
 
-        SaveCommits(undefined)
+      SaveCommits(data)
 
-        CreateMessage({
-          description: error.response.status === 422
-            ? 'Critério de pesquisa inválido'
-            : 'Aconteceu um erro inesperado',
-          isError: true,
-        })
-      })
+      if (data.length < 1) {
+        return CreateMessage({ description: 'Não existe commit para ser recuperado', isError: false })
+      }
+
+      if (data.length > 100) {
+        return CreateMessage({ description: 'Só é possível recuperar 100 commits por vez', isError: true })
+      }
+    } catch (error) {
+      console.error('error =>', error)
+
+      SaveCommits(undefined)
+
+      return CreateMessage({ description: 'Aconteceu um erro inesperado', isError: true })
+    }
   }
 
   return (
