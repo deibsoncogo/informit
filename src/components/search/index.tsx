@@ -32,6 +32,12 @@ export function Search() {
       return CreateMessage({ description: 'Informe mais um critério de pesquisa', isError: true })
     }
 
+    const [yy, mm, dd] = date.split('-')
+
+    if (new Date(Number(yy), Number(mm) - 1, Number(dd)) > new Date()) {
+      return CreateMessage({ description: 'Não é possível informar data futura', isError: true })
+    }
+
     const url = `https://api.github.com/search/commits?q=
       ${repository && `repo:${repository}+`}
       ${author && `author:${author}+`}
