@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
 
-type TCommit = {
+export type TCommit = {
   sha: string
   commit: {
     author: {

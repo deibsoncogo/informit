@@ -1,5 +1,6 @@
 {
   "rules": {
+    "no-restricted-syntax": "off",
     "react/jsx-no-target-blank": "off",
     "no-unused-expressions": "off",
     "jsx-a11y/label-has-associated-control": "off",

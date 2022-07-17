@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react'
 import axios from 'axios'
-import { UseCommit } from '../../contexts/commitContext'
+import { TCommit, UseCommit } from '../../contexts/commitContext'
 import { UseMessage } from '../../contexts/messageContext'
 import style from './style.module.scss'
 
@@ -77,12 +77,29 @@ export function Search() {
       author && localStorage.setItem('@informit:author', author)
       email && localStorage.setItem('@informit:email', email)
 
-      let data: []
+      let data: TCommit[]
 
       if (isOnlyRepository) {
         data = response.data
       } else {
         data = response.data.items
+      }
+
+      if (isOnlyRepository) {
+        for (const commit of data) {
+          const [owner, name] = repository.split('/')
+
+          const commitRepository = {
+            repository: {
+              name,
+              full_name: repository,
+              description: '',
+              owner: { login: owner },
+            },
+          }
+
+          Object.assign(commit, commitRepository)
+        }
       }
 
       SaveCommits(data)
@@ -97,7 +114,7 @@ export function Search() {
     } catch (error) {
       console.error('error =>', error)
 
-      SaveCommits(undefined)
+      // SaveCommits(undefined)
 
       return CreateMessage({ description: 'Aconteceu um erro inesperado', isError: true })
     }

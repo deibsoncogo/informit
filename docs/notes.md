@@ -20,3 +20,4 @@
 [X] Por algum motivo as vezes os commits recuperado na pesquisa anterior não some [CB03]
 [X] Gerar erro, repo:engenhariadc3/test+author:loginErrado+author-date:2022-07-15 [CB04]
 [X] Por algum motivo existe key duplicado nos commit [CB05]
+[X] Quando busco somente o repositório tem informação que fica faltando [CB06]
