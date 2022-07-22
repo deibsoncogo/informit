@@ -114,11 +114,13 @@ export function Search() {
           isError: true,
         })
       }
+
+      return CreateMessage({
+        description: `Foi encontrado ${data.length} commit${data.length > 1 && 's'}`,
+        isError: false,
+      })
     } catch (error) {
       console.error('error =>', error)
-
-      // SaveCommits(undefined)
-
       return CreateMessage({ description: 'Aconteceu um erro inesperado', isError: true })
     }
   }
