@@ -108,8 +108,11 @@ export function Search() {
         return CreateMessage({ description: 'Não existe commit para ser recuperado', isError: false })
       }
 
-      if (data.length > 100) {
-        return CreateMessage({ description: 'Só é possível recuperar 100 commits por vez', isError: true })
+      if (data.length >= 100) {
+        return CreateMessage({
+          description: 'Só é possível recuperar os últimos 100 commits por vez',
+          isError: true,
+        })
       }
     } catch (error) {
       console.error('error =>', error)
