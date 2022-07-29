@@ -16,7 +16,7 @@
   border: 4px solid var(--borderListCommit);
   border-radius: 5px;
 
-  .dividerCommit {
+  .separatorCommit {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +28,7 @@
 
     background-color: var(--borderListCommit);
 
-    p {
+    .separator {
       width: 200px;
       height: 3px;
     }

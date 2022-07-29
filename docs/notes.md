@@ -11,7 +11,7 @@
 [X] Arrumar a responsividade
 [X] Implementar trava para buscar com data futura
 [X] Informar quantos commits foi encontrado
-[] Implementar separado de períodos por dia e horário
+[X] Implementar separado de períodos por dia e horário
 [] Verificar uma forma de remover os ícones
 [] Buscar commits de repositório privado
 [] Atualizar o readme.md
@@ -25,3 +25,5 @@
 [X] Quando busco somente o repositório tem informação que fica faltando [CB06]
 [X] Verificar o porque não está aparecendo o aviso de 100 commits [CB07]
 [] Verificar o porque está pesquisa gera error, repo:deibsoncogo/ReactLabLuby+author:deibsoncogo+author-date:2022-07-22 [CB08]
+[] Centralizar as informações do autor e commit [CB09]
+[] Aplicar imutabilidade nas variáveis do separatorCommit [CB10]

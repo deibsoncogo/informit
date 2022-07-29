@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { UseCommit } from '../../contexts/commitContext'
 import { NumberRandomInteger } from '../../utils/numberRandomInteger'
 import { Commit } from '../commit'
@@ -6,47 +6,44 @@ import style from './style.module.scss'
 
 export function ListCommit() {
   const hoursInterval = 6
-  const [hourNext, setHourNext] = useState(24)
-  const [dateLast, setDateLast] = useState(undefined)
-  const [commitFirst, setCommitFirst] = useState(true)
+  let hourNext = 24
+  let commitFirst = true
+  let dateLast: undefined | string[]
 
   const { commits } = UseCommit()
 
-  console.clear()
-
-  function ImplementationDividerCommit(dateTime) {
+  function ImplementationSeparatorCommit(dateTime: string) {
     const date = String(dateTime).match(/\d+/g).splice(0, 3)
     const hour = new Date(dateTime).getHours()
-    console.log('-----> commit', date, hour)
 
     if (dateLast && (date[0] !== dateLast[0] || date[1] !== dateLast[1] || date[2] !== dateLast[2])) {
-      setHourNext(24)
+      hourNext = 24
     }
 
-    setDateLast(date)
+    dateLast = date
 
     if (hour < hourNext) {
       while (hour < hourNext) {
-        setHourNext(hourNext - hoursInterval)
-        console.log('hourNext =>', typeof hourNext, hourNext)
+        hourNext -= hoursInterval
       }
 
       if (!commitFirst) {
-        console.log('SEPARADOR APLICADO \n')
-
-        setCommitFirst(false)
-        return <section className={style.dividerCommit}><p /></section>
+        return (
+          <div className={style.separatorCommit}>
+            <div className={style.separator} />
+          </div>
+        )
       }
-    }
 
-    console.log('FIM \n')
+      commitFirst = false
+    }
   }
 
   return (
     <div className={style.listCommit}>
       {commits?.map(({ sha, html_url, commit, author, repository }) => (
         <Fragment key={NumberRandomInteger()}>
-          {ImplementationDividerCommit(commit.author.date)}
+          {ImplementationSeparatorCommit(commit.author.date)}
 
           <Commit
             key={sha + NumberRandomInteger()}
