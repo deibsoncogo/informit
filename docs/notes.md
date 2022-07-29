@@ -10,6 +10,8 @@
 [X] Verificar o porque o critério de pesquisa por data não está funcionando
 [X] Arrumar a responsividade
 [X] Implementar trava para buscar com data futura
+[X] Informar quantos commits foi encontrado
+[] Implementar separado de períodos por dia e horário
 [] Verificar uma forma de remover os ícones
 [] Buscar commits de repositório privado
 [] Atualizar o readme.md
@@ -21,3 +23,5 @@
 [X] Gerar erro, repo:engenhariadc3/test+author:loginErrado+author-date:2022-07-15 [CB04]
 [X] Por algum motivo existe key duplicado nos commit [CB05]
 [X] Quando busco somente o repositório tem informação que fica faltando [CB06]
+[X] Verificar o porque não está aparecendo o aviso de 100 commits [CB07]
+[] Verificar o porque está pesquisa gera error, repo:deibsoncogo/ReactLabLuby+author:deibsoncogo+author-date:2022-07-22 [CB08]

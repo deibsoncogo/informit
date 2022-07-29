@@ -13,6 +13,24 @@
 
   overflow-y: scroll;
 
-  border: 4px solid #74959a86;
+  border: 4px solid var(--borderListCommit);
   border-radius: 5px;
+
+  .dividerCommit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+
+    background-color: var(--borderListCommit);
+
+    p {
+      width: 200px;
+      height: 3px;
+    }
+  }
 }

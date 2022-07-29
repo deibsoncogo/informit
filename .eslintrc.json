@@ -1,5 +1,7 @@
 {
   "rules": {
+    "camelcase": "off",
+    "react/no-unstable-nested-components": "off",
     "no-restricted-syntax": "off",
     "react/jsx-no-target-blank": "off",
     "no-unused-expressions": "off",

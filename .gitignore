@@ -6,6 +6,7 @@ DS_Store
 **.log
 **.env.**
 **.txt
+production.md
 !notes.md
 .pnp
 .pnp.js
