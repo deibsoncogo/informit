@@ -1,5 +1,4 @@
-/* eslint-disable camelcase */
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { UseCommit } from '../../contexts/commitContext'
 import { NumberRandomInteger } from '../../utils/numberRandomInteger'
 import { Commit } from '../commit'
@@ -7,10 +6,9 @@ import style from './style.module.scss'
 
 export function ListCommit() {
   const hoursInterval = 6
-  let hourNext = 24
-  let dateLast
-  // não permitir o separador no primeiro
-  // ver uma forma de implementar o useState
+  const [hourNext, setHourNext] = useState(24)
+  const [dateLast, setDateLast] = useState(undefined)
+  const [commitFirst, setCommitFirst] = useState(true)
 
   const { commits } = UseCommit()
 
@@ -22,24 +20,26 @@ export function ListCommit() {
     console.log('-----> commit', date, hour)
 
     if (dateLast && (date[0] !== dateLast[0] || date[1] !== dateLast[1] || date[2] !== dateLast[2])) {
-      hourNext = 24
+      setHourNext(24)
     }
 
-    dateLast = date
+    setDateLast(date)
 
     if (hour < hourNext) {
       while (hour < hourNext) {
-        hourNext -= hoursInterval
+        setHourNext(hourNext - hoursInterval)
         console.log('hourNext =>', typeof hourNext, hourNext)
       }
 
-      console.log('SEPARADOR APLICADO')
-      console.log('')
-      return <section className={style.dividerCommit}><p /></section>
+      if (!commitFirst) {
+        console.log('SEPARADOR APLICADO \n')
+
+        setCommitFirst(false)
+        return <section className={style.dividerCommit}><p /></section>
+      }
     }
 
-    console.log('FIM')
-    console.log('')
+    console.log('FIM \n')
   }
 
   return (
