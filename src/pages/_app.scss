@@ -37,3 +37,20 @@ button {
   background-color: transparent;
   border: 0;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+
+  background-color: #CCCCCC;
+}
+
+::-webkit-scrollbar-track-piece {
+  margin: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+
+  background: #74959a;
+}

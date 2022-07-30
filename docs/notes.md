@@ -1,6 +1,7 @@
 ## Requisitos não funcionais
 [N] Estilização de tipo de proprietário do repositório
 [N] Devo criar um rodapé, mais com oque?
+[N] Verificar uma forma de remover os ícones
 [Y] Botão de enter realiza a busca do formulário
 [X] Ativar rolagem da página somente para os commits
 [X] Remover a propriedade repositoryOwnerType
@@ -12,13 +13,13 @@
 [X] Implementar trava para buscar com data futura
 [X] Informar quantos commits foi encontrado
 [X] Implementar separado de períodos por dia e horário
-[] Verificar uma forma de remover os ícones
+[X] Melhorar a aparência da barra de rolagem
 [] Buscar commits de repositório privado
 [] Atualizar o readme.md
 
 ## Correção de bugs
+[N] Corrigir fuso horário dos commits [CB02]
 [X] Erro que erá gerado quando faltava informação do github [CB01]
-[] Corrigir fuso horário dos commits [CB02]
 [X] Por algum motivo as vezes os commits recuperado na pesquisa anterior não some [CB03]
 [X] Gerar erro, repo:engenhariadc3/test+author:loginErrado+author-date:2022-07-15 [CB04]
 [X] Por algum motivo existe key duplicado nos commit [CB05]
