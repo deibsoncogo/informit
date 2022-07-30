@@ -14,4 +14,3 @@ production.md
 .pem
 .vercel
 !.env.example
-prints
