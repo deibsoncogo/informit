@@ -29,3 +29,4 @@
 [X] Centralizar as informações do autor e commit [CB09]
 [] Aplicar imutabilidade nas variáveis do separatorCommit [CB10]
 [X] Corrigir tamanho do divisor [CB11]
+[] Centralizar as informações do autor e commit quando quebra linha [CB12]
