@@ -15,7 +15,7 @@
 [X] Implementar separado de períodos por dia e horário
 [X] Melhorar a aparência da barra de rolagem
 [] Buscar commits de repositório privado
-[] Atualizar o readme.md
+[X] Atualizar o readme.md
 
 ## Correção de bugs
 [N] Corrigir fuso horário dos commits [CB02]
@@ -29,4 +29,4 @@
 [X] Centralizar as informações do autor e commit [CB09]
 [] Aplicar imutabilidade nas variáveis do separatorCommit [CB10]
 [X] Corrigir tamanho do divisor [CB11]
-[] Centralizar as informações do autor e commit quando quebra linha [CB12]
+[X] Centralizar as informações do autor e commit quando quebra linha [CB12]
