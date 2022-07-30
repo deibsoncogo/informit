@@ -24,6 +24,7 @@
 [X] Por algum motivo existe key duplicado nos commit [CB05]
 [X] Quando busco somente o repositório tem informação que fica faltando [CB06]
 [X] Verificar o porque não está aparecendo o aviso de 100 commits [CB07]
-[] Verificar o porque está pesquisa gera error, repo:deibsoncogo/ReactLabLuby+author:deibsoncogo+author-date:2022-07-22 [CB08]
+[X] Verificar o porque está pesquisa gera error [CB08]
 [] Centralizar as informações do autor e commit [CB09]
 [] Aplicar imutabilidade nas variáveis do separatorCommit [CB10]
+[] Corrigir tamanho do divisor [CB11]

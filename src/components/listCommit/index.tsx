@@ -47,16 +47,16 @@ export function ListCommit() {
 
           <Commit
             key={sha + NumberRandomInteger()}
-            commitMessage={commit ? commit.message : ''}
-            commitUrl={html_url || ''}
-            commitDate={commit ? commit.author.date : ''}
-            authorName={commit ? commit.author.name : ''}
-            authorLogin={author ? author.login : ''}
-            authorAvatarUrl={author ? author.avatar_url : ''}
-            authorHtmlUrl={author ? author.html_url : ''}
-            repositoryFullName={repository ? repository.full_name : ''}
-            repositoryName={repository ? repository.name : ''}
-            repositoryDescription={repository ? repository.description : ''}
+            commitMessage={commit ? commit.message : undefined}
+            commitUrl={html_url || undefined}
+            commitDate={commit ? commit.author.date : undefined}
+            authorName={commit ? commit.author.name : undefined}
+            authorLogin={author ? author.login : undefined}
+            authorAvatarUrl={author ? author.avatar_url : undefined}
+            authorHtmlUrl={author ? author.html_url : undefined}
+            repositoryFullName={repository ? repository.full_name : undefined}
+            repositoryName={repository ? repository.name : undefined}
+            repositoryDescription={repository ? repository.description : undefined}
           />
         </Fragment>
       ))}
