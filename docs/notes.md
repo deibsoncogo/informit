@@ -27,4 +27,4 @@
 [X] Verificar o porque está pesquisa gera error [CB08]
 [X] Centralizar as informações do autor e commit [CB09]
 [] Aplicar imutabilidade nas variáveis do separatorCommit [CB10]
-[] Corrigir tamanho do divisor [CB11]
+[X] Corrigir tamanho do divisor [CB11]
