@@ -52,14 +52,12 @@
       align-items: center;
       justify-content: center;
 
-      .time,
-      .date,
-      .authorName {
-        White-space: nowrap;
-      }
+      a {
+        width: 150px;
 
-      .repositoryName {
-        word-break: break-all;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
 

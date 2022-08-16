@@ -32,11 +32,19 @@ export function Commit({
 
       <section className={style.commitExtra}>
         <span className={style.information}>
-          <a tabIndex={-1} href={urlRepository} target='_blank' title={repositoryDescription}>
+          <a
+            tabIndex={-1}
+            href={urlRepository}
+            target='_blank'
+            title={`
+              ${repositoryName || ''}
+              ${repositoryDescription || ''}
+            `}
+          >
             <strong className={style.repositoryName}>{repositoryName}</strong>
           </a>
 
-          <a tabIndex={-1} href={authorHtmlUrl} target='_blank' title={`login: ${authorLogin}`}>
+          <a tabIndex={-1} href={authorHtmlUrl} target='_blank' title={authorLogin}>
             <strong className={style.authorName}>{authorName}</strong>
           </a>
         </span>
