@@ -7,15 +7,15 @@
   width: 100%;
   height: 100%;
   margin-bottom: 20px;
-  border: 5px solid #e4d9c8;
+  border: 5px solid var(--headerBorder);
   border-radius: 5px 35px 5px 5px;
   padding: 10px;
 
-  background-color: #E4DCCF;
+  background-color: var(--headerBackground);
   user-select: none;
 
   .title {
-    color: #576F72;
+    color: var(--headerTitle);
     font-size: 40px;
     font-weight: 900;
   }
@@ -23,12 +23,12 @@
   .message {
     margin-left: 20px;
 
-    color: #519259;
+    color: var(--success);
     font-size: 20px;
     font-weight: 400;
 
     &#error {
-      color: #FF6363;
+      color: var(--error);
     }
   }
 }

@@ -1,7 +1,29 @@
 :root {
-  --backgroundColor: #EEEEEE;
   --font: #171717;
-  --borderListCommit: #74959a86
+  --background: #eeeeee;
+
+  --scrollbarBackground: #cccccc;
+  --scrollbarThumb: #74959a;
+
+  --headerBackground: #E4DCCF;
+  --headerBorder: #e4d9c8;
+  --headerTitle: #576F72;
+
+  --searchInputBorder: #d8c4a4;
+  --searchInputBorderFocus: #ad3c65;
+  --searchInputFont: #1B2430;
+  --searchButton: #D885A3;
+  --searchButtonHover: #bb5278;
+
+  --listCommitBorder: #74959a86;
+
+  --commitBackground: #74959a86;
+  --commitBackgroundHover: #87ccd686;
+  --commitAHover: #011214;
+  --commitAvatarBorder: #74959abe;
+
+  --success: #519259;
+  --error: #FF6363;
 }
 
 * {
@@ -15,9 +37,8 @@
 }
 
 html {
-  background-color: var(--backgroundColor);
   color: var(--font);
-  // overflow: hidden;
+  background-color: var(--background);
 }
 
 body {
@@ -31,18 +52,11 @@ a {
   text-decoration: none;
 }
 
-
-button {
-  cursor: pointer;
-  background-color: transparent;
-  border: 0;
-}
-
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 
-  background-color: #CCCCCC;
+  background-color: var(--scrollbarBackground);
 }
 
 ::-webkit-scrollbar-track-piece {
@@ -52,5 +66,5 @@ button {
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
 
-  background: #74959a;
+  background: var(--scrollbarThumb);
 }

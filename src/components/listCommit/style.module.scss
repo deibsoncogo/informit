@@ -8,13 +8,12 @@
   max-width: 1500px;
   height: calc(100vh - 210px);
   min-height: 300px;
+  border: 4px solid var(--listCommitBorder);
+  border-radius: 5px;
   padding: 10px;
   gap: 20px;
 
   overflow-y: scroll;
-
-  border: 4px solid var(--borderListCommit);
-  border-radius: 5px;
 
   .separatorCommit {
     display: flex;
@@ -26,7 +25,7 @@
     height: 3px;
     border-radius: 50px;
 
-    background-color: var(--borderListCommit);
+    background-color: var(--listCommitBorder);
 
     .separator {
       height: 3px;
