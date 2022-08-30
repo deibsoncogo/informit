@@ -21,16 +21,16 @@ export function Commit({
   const newDate = new Date(commitDate)
 
   return (
-    <div className={style.commit}>
-      <section className={style.commitNote}>
+    <aside className={style.commit}>
+      <div className={style.commitNote}>
         <strong>{commitMessage}</strong>
 
         <a tabIndex={-1} href={commitUrl} target='_blank' className={style.commitUrl}>
           <p>{commitUrl}</p>
         </a>
-      </section>
+      </div>
 
-      <section className={style.commitExtra}>
+      <div className={style.commitExtra}>
         <span className={style.information}>
           <a
             tabIndex={-1}
@@ -68,7 +68,7 @@ export function Commit({
         <a tabIndex={-1} href={authorHtmlUrl} target='_blank'>
           <img src={authorAvatarUrl} alt='Avatar' className={style.avatar} />
         </a>
-      </section>
-    </div>
+      </div>
+    </aside>
   )
 }

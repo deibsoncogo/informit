@@ -40,7 +40,7 @@ export function ListCommit() {
   }
 
   return (
-    <div className={style.listCommit}>
+    <section className={style.listCommit}>
       {commits?.map(({ sha, html_url, commit, author, repository }) => (
         <Fragment key={NumberRandomInteger()}>
           {ImplementationSeparatorCommit(commit.author.date)}
@@ -60,6 +60,6 @@ export function ListCommit() {
           />
         </Fragment>
       ))}
-    </div>
+    </section>
   )
 }

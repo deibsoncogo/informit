@@ -5,7 +5,7 @@ export function Header() {
   const { message } = UseMessage()
 
   return (
-    <div className={style.header}>
+    <header className={style.header}>
       <h1 className={style.title}>
         Informit
       </h1>
@@ -13,6 +13,6 @@ export function Header() {
       <strong id={message?.isError ? style.error : ''} className={style.message}>
         {message?.description}
       </strong>
-    </div>
+    </header>
   )
 }
